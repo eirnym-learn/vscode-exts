@@ -1,7 +1,7 @@
 {
   "name": "python",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension Python Pack",
+  "displayName": "EirNym Local Extension Python Pack",
   "description": "Python extensions used.",
     "repository": "https://github.com/eirnym-learn/vscode-exts",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "ms-python.vscode-python-envs",
     "charliermarsh.ruff",
     "ms-python.vscode-pylance",
-    "jannchie.ruff-ignore-explainer"
+    "jannchie.ruff-ignore-explainer",
+    "detachhead.basedpyright"
   ]
 }

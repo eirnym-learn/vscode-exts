@@ -1,7 +1,7 @@
 {
   "name": "python-builtin",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension Python Pack (builtins)",
+  "displayName": "EirNym Local Extension Python Pack (builtins)",
   "description": "Python built-in extensions used.",
     "repository": "https://github.com/eirnym-learn/vscode-exts",
   "license": "MIT",

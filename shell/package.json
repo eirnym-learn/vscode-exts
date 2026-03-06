@@ -1,8 +1,8 @@
 {
   "name": "shell",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension Common Pack",
-  "description": "Common extensions used.",
+  "displayName": "Local Extension Shell Pack",
+  "description": "Shell extensions used.",
   "repository": "https://github.com/eirnym-learn/vscode-exts",
   "license": "MIT",
   "version": "0.0.1",

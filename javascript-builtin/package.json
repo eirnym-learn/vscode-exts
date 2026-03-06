@@ -1,7 +1,7 @@
 {
   "name": "js-builtin",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension JavaScript Pack (builtins)",
+  "displayName": "EirNym Local Extension JavaScript Pack (builtins)",
   "description": "JavaScript built-in extensions.",
     "repository": "https://github.com/eirnym-learn/vscode-exts",
   "license": "MIT",

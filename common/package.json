@@ -1,7 +1,7 @@
 {
   "name": "common",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension Common Pack",
+  "displayName": "EirNym Local Extension Common Pack",
   "description": "Common extensions used.",
   "repository": "https://github.com/eirnym-learn/vscode-exts",
   "version": "0.0.1",

@@ -1,7 +1,7 @@
 {
   "name": "rust",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension Rust Pack",
+  "displayName": "EirNym Local Extension Rust Pack",
   "description": "Common extensions used.",
     "repository": "https://github.com/eirnym-learn/vscode-exts",
   "license": "MIT",

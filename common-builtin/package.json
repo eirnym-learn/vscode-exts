@@ -1,7 +1,7 @@
 {
   "name": "common-builtin",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension Common Pack (builtins)",
+  "displayName": "EirNym Local Extension Common Pack (builtins)",
   "description": "Common built-in extensions used.",
   "repository": "https://github.com/eirnym-learn/vscode-exts",
   "license": "MIT",

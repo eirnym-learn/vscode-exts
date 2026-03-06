@@ -1,7 +1,7 @@
 {
   "name": "cpp",
   "publisher": "eirnym-internal",
-  "displayName": "Local Extension C++ Pack",
+  "displayName": "EirNym Local Extension C++ Pack",
   "description": "C++ extensions used.",
   "repository": "https://github.com/eirnym-learn/vscode-exts",
   "license": "MIT",
