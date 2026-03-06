@@ -82,8 +82,9 @@ jobs:
         mkdir ../output
         npm install --global @vscode/vsce --prefer-offline
         vsce package --no-dependencies \
-          --out "../output/$MATRIX_NAME-$MATRIX_VERSION.vsix"
+          --out "../output/$MATRIX_PUBLISHER.$MATRIX_NAME-$MATRIX_VERSION.vsix"
       env:
+        MATRIX_PUBLISHER: ${{ matrix.publisher }}
         MATRIX_NAME: ${{ matrix.name }}
         MATRIX_VERSION: ${{ matrix.version }}
 
