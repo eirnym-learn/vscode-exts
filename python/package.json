@@ -1,18 +1,12 @@
 {
-  "name": "python",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension Python Pack",
-  "description": "Python extensions used.",
-    "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "Python extensions used.",
+  "displayName": "EirNym Local Extension Python Pack",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "ms-python.python",
     "ms-python.debugpy",
@@ -21,5 +15,10 @@
     "ms-python.vscode-pylance",
     "jannchie.ruff-ignore-explainer",
     "detachhead.basedpyright"
-  ]
+  ],
+  "license": "MIT",
+  "name": "python",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

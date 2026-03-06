@@ -1,20 +1,20 @@
 {
-  "name": "shell-builtin",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension Shell Pack (builtin)",
-  "description": "Shell built-in extensions used.",
-  "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "Shell built-in extensions used.",
+  "displayName": "EirNym Local Extension Shell Pack (builtin)",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "vscode.bat",
     "vscode.shellscript",
     "vscode.powershell"
-  ]
+  ],
+  "license": "MIT",
+  "name": "shell-builtin",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

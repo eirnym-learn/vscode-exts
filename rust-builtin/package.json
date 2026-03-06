@@ -1,16 +1,16 @@
 {
-  "name": "rust-builtin",
-  "publisher": "internal",
-  "displayName": "EirNym Local Extension Rust Pack (builtin)",
-  "description": "Rust built-in extensions used.",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "Rust built-in extensions used.",
+  "displayName": "EirNym Local Extension Rust Pack (builtin)",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "vscode.rust"
-  ]
+  ],
+  "name": "rust-builtin",
+  "publisher": "internal",
+  "version": "0.0.1"
 }

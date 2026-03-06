@@ -1,18 +1,18 @@
 {
-  "name": "shell",
-  "publisher": "eirnym-internal",
-  "displayName": "Local Extension Shell Pack",
-  "description": "Shell extensions used.",
-  "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "Shell extensions used.",
+  "displayName": "Local Extension Shell Pack",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "rechinformatica.rech-editor-batch"
-  ]
+  ],
+  "license": "MIT",
+  "name": "shell",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

@@ -1,22 +1,22 @@
 {
-  "name": "cpp",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension C++ Pack",
-  "description": "C++ extensions used.",
-  "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "C++ extensions used.",
+  "displayName": "EirNym Local Extension C++ Pack",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "jeff-hykin.better-cpp-syntax",
     "notskm.clang-tidy",
     "llvm-vs-code-extensions.vscode-clangd",
     "sr-team.vscode-clangd-codelens",
     "mesonbuild.mesonbuild"
-  ]
+  ],
+  "license": "MIT",
+  "name": "cpp",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

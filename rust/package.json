@@ -1,18 +1,21 @@
 {
-  "name": "rust",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension Rust Pack",
+  "categories": [
+    "Extension Packs"
+  ],
   "description": "Common extensions used.",
-    "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-
-  "version": "0.0.1",
-  "engines": { "vscode": "^1.85.0" },
-  "categories": ["Extension Packs"],
+  "displayName": "EirNym Local Extension Rust Pack",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "chrisbeard.rustdocstring",
     "lorenzopirro.rust-flash-snippets",
     "swellaby.vscode-rust-test-adapter",
     "rust-lang.rust-analyzer"
-  ]
+  ],
+  "license": "MIT",
+  "name": "rust",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

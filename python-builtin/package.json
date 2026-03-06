@@ -1,20 +1,19 @@
 {
-  "name": "python-builtin",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension Python Pack (builtins)",
-  "description": "Python built-in extensions used.",
-    "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "Python built-in extensions used.",
+  "displayName": "EirNym Local Extension Python Pack (builtins)",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "vscode.python",
     "vscode.restructuredtext"
-  ]
+  ],
+  "license": "MIT",
+  "name": "python-builtin",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

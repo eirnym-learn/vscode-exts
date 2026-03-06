@@ -1,18 +1,12 @@
 {
-  "name": "js-builtin",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension JavaScript Pack (builtins)",
-  "description": "JavaScript built-in extensions.",
-    "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "JavaScript built-in extensions.",
+  "displayName": "EirNym Local Extension JavaScript Pack (builtins)",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "vscode.css-language-features",
     "vscode.html-language-features",
@@ -26,5 +20,10 @@
     "vscode.javascript",
     "vscode.scss",
     "vscode.typescript"
-  ]
+  ],
+  "license": "MIT",
+  "name": "js-builtin",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

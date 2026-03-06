@@ -1,22 +1,21 @@
 {
-  "name": "csharp",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension C# Pack",
-  "description": "C# extensions used.",
-  "version": "0.0.1",
-    "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "C# extensions used.",
+  "displayName": "EirNym Local Extension C# Pack",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "ms-dotnettools.vscode-dotnet-runtime",
     "ms-dotnettools.csharp",
     "dannymcgee.csharp-grammar-extended",
     "vytautassurvila.csharp-ls"
-  ]
+  ],
+  "license": "MIT",
+  "name": "csharp",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

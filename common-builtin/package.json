@@ -1,13 +1,12 @@
 {
-  "name": "common-builtin",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension Common Pack (builtins)",
+  "categories": [
+    "Extension Packs"
+  ],
   "description": "Common built-in extensions used.",
-  "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-  "version": "0.0.1",
-  "engines": { "vscode": "^1.85.0" },
-  "categories": ["Extension Packs"],
+  "displayName": "EirNym Local Extension Common Pack (builtins)",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "vscode.json-language-features",
     "vscode.markdown-language-features",
@@ -34,5 +33,10 @@
     "vscode.prompt",
     "vscode.powershell",
     "vscode.extension-editing"
-  ]
+  ],
+  "license": "MIT",
+  "name": "common-builtin",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

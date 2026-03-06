@@ -1,22 +1,21 @@
 {
-  "name": "js",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension JavaScript Pack",
-  "description": "JavaScript extensions.",
-    "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "JavaScript extensions.",
+  "displayName": "EirNym Local Extension JavaScript Pack",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "vue.volar",
     "vytautassurvila.csharp-ls",
     "esbenp.prettier-vscode",
     "vitest.explorer"
-  ]
+  ],
+  "license": "MIT",
+  "name": "js",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

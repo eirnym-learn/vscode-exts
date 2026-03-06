@@ -1,20 +1,18 @@
 {
-  "name": "csharp-builtin",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension C# Pack (builtins)",
-  "description": "C# built-in extensions used.",
-    "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "license": "MIT",
-
-  "version": "0.0.1",
-
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "C# built-in extensions used.",
+  "displayName": "EirNym Local Extension C# Pack (builtins)",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "vscode.csharp"
-  ]
+  ],
+  "license": "MIT",
+  "name": "csharp-builtin",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }

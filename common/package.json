@@ -1,16 +1,12 @@
 {
-  "name": "common",
-  "publisher": "eirnym-internal",
-  "displayName": "EirNym Local Extension Common Pack",
-  "description": "Common extensions used.",
-  "repository": "https://github.com/eirnym-learn/vscode-exts",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.85.0"
-  },
   "categories": [
     "Extension Packs"
   ],
+  "description": "Common extensions used.",
+  "displayName": "EirNym Local Extension Common Pack",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
   "extensionPack": [
     "mohammadbaqer.better-folding",
     "jerky676.vscode-case-changer-context",
@@ -31,5 +27,9 @@
     "ms-vscode.test-adapter-converter",
     "hbenl.vscode-test-explorer",
     "3xpo.regionfolding"
-  ]
+  ],
+  "name": "common",
+  "publisher": "eirnym-internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "version": "0.0.1"
 }
