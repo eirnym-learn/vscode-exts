@@ -1,6 +1,6 @@
 {
   "name": "rust-builtin",
-  "publisher": "eirnym-internal",
+  "publisher": "internal",
   "displayName": "Local Extension Rust Pack (builtin)",
   "description": "Rust built-in extensions used.",
   "version": "0.0.1",

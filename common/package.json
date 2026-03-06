@@ -3,6 +3,7 @@
   "publisher": "eirnym-internal",
   "displayName": "Local Extension Common Pack",
   "description": "Common extensions used.",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.0"

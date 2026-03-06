@@ -3,6 +3,9 @@
   "publisher": "eirnym-internal",
   "displayName": "Local Extension Python Pack",
   "description": "Python extensions used.",
+    "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "license": "MIT",
+
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.0"

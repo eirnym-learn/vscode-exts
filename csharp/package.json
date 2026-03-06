@@ -4,6 +4,9 @@
   "displayName": "Local Extension C# Pack",
   "description": "C# extensions used.",
   "version": "0.0.1",
+    "repository": "https://github.com/eirnym-learn/vscode-exts",
+  "license": "MIT",
+
   "engines": {
     "vscode": "^1.85.0"
   },
