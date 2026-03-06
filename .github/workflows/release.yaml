@@ -89,11 +89,13 @@ jobs:
     - name: Upload artefact
       uses: actions/upload-artifact@v6
       with:
-        name: output
+        name: $MATRIX_NAME-$MATRIX_VERSION
         path: output/*.vsix
         retention-days: 1
         if-no-files-found: error
-
+      env:
+        MATRIX_VERSION: ${{ matrix.version }}
+        MATRIX_NAME: ${{ matrix.name }}
   publish:
     name: Publish GitHub Release
     needs: package
