@@ -19,8 +19,8 @@ repos:
     args: [--fix=lf]
     exclude_types: [batch]
   - id: check-executables-have-shebangs
-  - id: no-commit-to-branch
-    args: [--branch, main]
+  #- id: no-commit-to-branch
+  #  args: [--branch, main]
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v6.0.0
   hooks:

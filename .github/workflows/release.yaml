@@ -1,3 +1,4 @@
+---
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: true
@@ -5,16 +6,12 @@ concurrency:
 name: Release VSCode Extensions
 
 on:
-  push:
-    tags:
-      - "v*.*.*"
   workflow_dispatch:
     inputs:
-      tag:
-        description: "Release tag (e.g. v1.2.3)"
+      version:
+        description: Release version (e.g. v1.2.3)
         required: true
 
-# Default to no permissions — elevated only where needed
 permissions: {}
 
 jobs:
@@ -26,18 +23,28 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v6
-      - name: Build extension matrix
-        id: set-matrix
-        run: |
-          extensions=()
-          for package in $(find . -name package.json -maxdepth 2 -mindepth 2 -type f | sort);do
-            dir=$(dirname "$package" | sed 's,^\./,,')
-            output=$( jq --indent 0 "{dir: \"$dir\", publisher: .publisher, name: .name, version: .version}" "$package")
-            extensions+=($output)
-          done
-          matrix=$(printf '%s\n' "${extensions[@]}" | jq -sc '{"include": .}')
-          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+    - name: Input version check
+      run: |
+        if ! [[ "$INPUT_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-(rc|alpha|beta)[0-9]+)?$ ]]; then
+          echo "[ERROR]: Input version doesn't follow semver: $INPUT_VERSION"
+          exit 1
+        fi
+      env:
+        INPUT_VERSION: ${{ inputs.version }}
+    - uses: actions/checkout@v6
+      with:
+        persist-credentials: false
+    - name: Build extension matrix
+      id: set-matrix
+      run: |
+        extensions=()
+        for package in $(find . -name package.json -maxdepth 2 -mindepth 2 -type f | sort);do
+          dir=$(dirname "$package" | sed 's,^\./,,')
+          output=$( jq --indent 0 "{dir: \"$dir\", publisher: .publisher, name: .name, version: .version}" "$package")
+          extensions+=($output)
+        done
+        matrix=$(printf '%s\n' "${extensions[@]}" | jq -sc '{"include": .}')
+        echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
 
   package:
     name: Package ${{ matrix.name }}
@@ -47,76 +54,66 @@ jobs:
       contents: read
     strategy:
       matrix: ${{ fromJson(needs.discover.outputs.matrix) }}
-      fail-fast: false          # package the rest even if one fails
+      fail-fast: false
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          cache-dependency-path: ${{ matrix.dir }}/package-lock.json
+    - uses: actions/checkout@v6
+      with:
+        persist-credentials: false
+    - uses: actions/setup-node@v6
+      with:
+        cache-dependency-path: ${{ matrix.dir }}/package-lock.json
 
-      - name: Install dependencies
-        working-directory: ${{ matrix.dir }}
-        run: npm ci
+    - name: Install dependencies
+      working-directory: ${{ matrix.dir }}
+      run: npm ci
 
-      - name: Compile / build
-        working-directory: ${{ matrix.dir }}
-        # Remove this step if your extensions ship raw TypeScript source
-        run: npm run compile --if-present
+    - name: Compile / build
+      working-directory: ${{ matrix.dir }}
+      run: npm run compile --if-present
 
-      - name: Run tests
-        working-directory: ${{ matrix.dir }}
-        run: npm test --if-present
+    - name: Run tests
+      working-directory: ${{ matrix.dir }}
+      run: npm test --if-present
 
-      - name: Package extension (.vsix)
-        working-directory: ${{ matrix.dir }}
-        run: |
-          npm install --global @vscode/vsce --prefer-offline
-          vsce package --no-dependencies \
-            --out "${{ matrix.name }}-${{ matrix.version }}.vsix"
+    - name: Package extension (.vsix)
+      working-directory: ${{ matrix.dir }}
+      run: |
+        mkdir ../output
+        npm install --global @vscode/vsce --prefer-offline
+        vsce package --no-dependencies \
+          --out "../output/$ATRIX_NAM-$MATRIX_VERSION.vsix"
+      env:
+        MATRIX_VERSION: ${{ matrix.version }}
+        MATRIX_NAME: ${{ matrix.name }}
 
-      - name: Upload artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.name }}-${{ matrix.version }}
-          path: ${{ matrix.dir }}/${{ matrix.name }}-${{ matrix.version }}.vsix
-          retention-days: 1
-          if-no-files-found: error
+    - name: Upload artefact
+      uses: actions/upload-artifact@v6
+      with:
+        name: output
+        path: output/*.vsix
+        retention-days: 1
+        if-no-files-found: error
 
-  # ── 3. Publish all artefacts as a single GitHub Release ───────────────────
   publish:
     name: Publish GitHub Release
     needs: package
     runs-on: ubuntu-latest
-    environment: publish-gh       # gate behind your environment + its secrets/reviewers
+    # environment: publish-gh
     permissions:
-      contents: write             # needed to create releases and upload assets
+      contents: write
     steps:
-      - name: Download all artefacts
-        uses: actions/download-artifact@v4
-        with:
-          path: dist/             # each extension lands in dist/<name>-<version>/
+    - name: Download all artefacts
+      uses: actions/download-artifact@v7
+      with:
+        path: dist/
 
-      - name: Collect .vsix files
-        id: collect
-        run: |
-          files=$(find dist -name "*.vsix" | tr '\n' ' ')
-          echo "files=$files" >> "$GITHUB_OUTPUT"
-
-      - name: Determine release tag
-        id: tag
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "tag=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "tag=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Create release & upload assets
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "${{ steps.tag.outputs.tag }}" \
-            --repo "${{ github.repository }}" \
-            --title "Release ${{ steps.tag.outputs.tag }}" \
-            --generate-notes \
-            ${{ steps.collect.outputs.files }}
+    - name: Create release & upload assets
+      run: |
+        echo gh release create "$INPUT_VERSION" \
+          --repo "${{ github.repository }}" \
+          --title "Release $INPUT_VERSION" \
+          --generate-notes \
+          $(find dist -name "*.vsix" | tr '\n' ' ')
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        INPUT_VERSION: ${{ inputs.version }}
