@@ -48,7 +48,7 @@ jobs:
         echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
 
   package:
-    name: Package ${{ matrix.name }}
+    name: Package extension ${{ matrix.name }}
     needs: discover
     runs-on: ubuntu-latest
     permissions:

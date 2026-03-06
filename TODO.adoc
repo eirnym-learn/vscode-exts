@@ -1,0 +1,6 @@
+= To be done at some point
+
+* [ ] Add renovatebot
+* [ ] Add prek workflow
+* [ ] Add per-commit build
+* [ ] Add wait-for-others
