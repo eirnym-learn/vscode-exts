@@ -10,7 +10,9 @@
   "extensionPack": [
     "vscode.rust"
   ],
+  "license": "MIT",
   "name": "rust-builtin",
   "publisher": "internal",
+  "repository": "https://github.com/eirnym-learn/vscode-exts",
   "version": "0.0.1"
 }

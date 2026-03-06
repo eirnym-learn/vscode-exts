@@ -79,6 +79,7 @@ jobs:
     - name: Package extension (.vsix)
       working-directory: ${{ matrix.dir }}
       run: |
+        cp ../LICENSE .
         npm install --no-fund --global @vscode/vsce --prefer-offline
         vsce package --no-dependencies \
           --out "../$MATRIX_PUBLISHER.$MATRIX_NAME-$MATRIX_VERSION.vsix"
