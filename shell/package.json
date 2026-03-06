@@ -1,5 +1,6 @@
 {
-  "name": "eirnym.shell",
+  "name": "shell",
+  "publisher": "eirnym-internal",
   "displayName": "Local Extension Common Pack",
   "description": "Common extensions used.",
   "version": "0.0.1",

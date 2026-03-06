@@ -1,5 +1,6 @@
 {
-  "name": "eirnym.cpp",
+  "name": "cpp",
+  "publisher": "eirnym-internal",
   "displayName": "Local Extension C++ Pack",
   "description": "C++ extensions used.",
   "version": "0.0.1",

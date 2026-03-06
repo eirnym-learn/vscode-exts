@@ -1,5 +1,6 @@
 {
-  "name": "eirnym.js",
+  "name": "js",
+  "publisher": "eirnym-internal",
   "displayName": "Local Extension JavaScript Pack",
   "description": "JavaScript extensions.",
   "version": "0.0.1",

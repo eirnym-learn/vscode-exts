@@ -1,5 +1,6 @@
 {
-  "name": "eirnym.csharp-builtin",
+  "name": "csharp-builtin",
+  "publisher": "eirnym-internal",
   "displayName": "Local Extension Common Pack (builtins)",
   "description": "Common built-in extensions used.",
   "version": "0.0.1",

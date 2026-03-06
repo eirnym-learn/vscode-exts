@@ -1,5 +1,6 @@
 {
-  "name": "eirnym.python-builtin",
+  "name": "python-builtin",
+  "publisher": "eirnym-internal",
   "displayName": "Local Extension Python Pack (builtins)",
   "description": "Python built-in extensions used.",
   "version": "0.0.1",

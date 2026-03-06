@@ -1,5 +1,6 @@
 {
-  "name": "eirnym.cpp-builtin",
+  "name": "cpp-builtin",
+  "publisher": "eirnym-internal",
   "displayName": "Local Extension Common Pack (builtins)",
   "description": "Common built-in extensions used.",
   "version": "0.0.1",
