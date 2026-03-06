@@ -42,7 +42,7 @@ jobs:
         count=0
         for package in $(find . -name package.json -maxdepth 2 -mindepth 2 -type f | sort);do
           count=$((count + 1))
-          [ "$count" -eq 2 ] && break
+          [ "$count" -eq 3 ] && break
           dir=$(dirname "$package" | sed 's,^\./,,')
           output=$( jq --indent 0 "{dir: \"$dir\", publisher: .publisher, name: .name, version: .version}" "$package")
           extensions+=($output)
@@ -85,10 +85,10 @@ jobs:
         mkdir ../output
         npm install --global @vscode/vsce --prefer-offline
         vsce package --no-dependencies \
-          --out "../output/$ATRIX_NAM-$MATRIX_VERSION.vsix"
+          --out "../output/$MATRIX_NAME-$MATRIX_VERSION.vsix"
       env:
-        MATRIX_VERSION: ${{ matrix.version }}
         MATRIX_NAME: ${{ matrix.name }}
+        MATRIX_VERSION: ${{ matrix.version }}
 
     - name: Upload artefact
       uses: actions/upload-artifact@v6
@@ -119,4 +119,4 @@ jobs:
           $(find dist -name "*.vsix" | tr '\n' ' ')
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        INPUT_VERSION: ${{ inputs.version }}
+        INPUT_VERSION: ${{ github.event.inputs.version }}
