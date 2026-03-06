@@ -43,6 +43,7 @@ jobs:
           dir=$(dirname "$package" | sed 's,^\./,,')
           output=$( jq --indent 0 "{dir: \"$dir\", publisher: .publisher, name: .name, version: .version}" "$package")
           extensions+=($output)
+          break
         done
         matrix=$(printf '%s\n' "${extensions[@]}" | jq -sc '{"include": .}')
         echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
@@ -90,13 +91,10 @@ jobs:
     - name: Upload artefact
       uses: actions/upload-artifact@v6
       with:
-        name: $MATRIX_NAME-$MATRIX_VERSION
+        name: ${{ matrix.name }}-${{ matrix.version }}
         path: output/*.vsix
         retention-days: 1
         if-no-files-found: error
-      env:
-        MATRIX_VERSION: ${{ matrix.version }}
-        MATRIX_NAME: ${{ matrix.name }}
   publish:
     name: Publish GitHub Release
     needs: package
