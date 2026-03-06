@@ -1,0 +1,16 @@
+{
+  "name": "eirnym.python-builtin",
+  "displayName": "Local Extension Python Pack (builtins)",
+  "description": "Python built-in extensions used.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [
+    "vscode.python",
+    "vscode.restructuredtext"
+  ]
+}

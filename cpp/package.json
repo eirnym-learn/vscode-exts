@@ -1,0 +1,19 @@
+{
+  "name": "eirnym.cpp",
+  "displayName": "Local Extension C++ Pack",
+  "description": "C++ extensions used.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [
+    "jeff-hykin.better-cpp-syntax",
+    "notskm.clang-tidy",
+    "llvm-vs-code-extensions.vscode-clangd",
+    "sr-team.vscode-clangd-codelens",
+    "mesonbuild.mesonbuild"
+  ]
+}

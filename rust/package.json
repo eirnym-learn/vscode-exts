@@ -1,0 +1,14 @@
+{
+  "name": "eirnym.rust",
+  "displayName": "Local Extension Rust Pack",
+  "description": "Common extensions used.",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Extension Packs"],
+  "extensionPack": [
+    "chrisbeard.rustdocstring",
+    "lorenzopirro.rust-flash-snippets",
+    "swellaby.vscode-rust-test-adapter",
+    "rust-lang.rust-analyzer"
+  ]
+}

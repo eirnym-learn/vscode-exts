@@ -1,0 +1,17 @@
+{
+  "name": "eirnym.shell-builtin",
+  "displayName": "Local Extension Shell Pack (builtin)",
+  "description": "Shell built-in extensions used.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [
+    "vscode.bat",
+    "vscode.shellscript",
+    "vscode.powershell"
+  ]
+}

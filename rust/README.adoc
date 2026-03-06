@@ -1,0 +1,60 @@
+= Rust extensions for VSCode
+
+== Useful Rust extensions for VSCode
+
+|=====
+|Extension id| Official description | Notes
+// ------------
+| chrisbeard.rustdocstring
+| Automatically generate structured Rust doc comments (///) for functions, structs, and enums.
+| Better than nothing. Has their own flaws with type detection.
+// ------------
+| lorenzopirro.rust-flash-snippets
+| A comprehensive set of Rust snippets for everyone
+| A bit faster code writing.
+  It will be better it list will be modifiable.
+// ------------
+| swellaby.vscode-rust-test-adapter
+| View and run your Rust tests in the Sidebar of Visual Studio Code
+|
+// ------------
+| rust-lang.rust-analyzer
+| Rust language support for Visual Studio Code
+| Currently the best plugin.
+  Has their own flaws, but it's fine.
+// ------------
+|=====
+
+== Sometimes useful extensions for VSCode
+
+|=====
+|Extension id| Official description | Notes
+// ------------
+| cordx56.rustowl-vscode
+| Visualize ownership and lifetimes in Rust
+a|
+* Nightly Rust is required
+* It's more a debugging/learning tool, than for daily use
+// ------------
+| jscearcy.rust-doc-viewer
+| View locally generated rust documentation within VS Code
+| Useful when rust doc server is unavailable
+// ------------
+
+|=====
+
+
+== Not-So-Useful extensions for VSCode
+
+|=====
+|Extension id| Official description | Notes
+// ------------
+| zhangyue.rust-mod-generator
+| Create a mod quickly.
+| Creating and managing Rust modules manually is faster.
+// ------------
+| swellaby.rust-pack
+| Extension Pack for Rust
+| Heavily outdated and today is mostly misleading.
+// ------------
+|=====

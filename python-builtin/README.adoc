@@ -1,0 +1,14 @@
+= Python extensions for VSCode
+
+== Not-So-Useful extensions for VSCode
+
+|=====
+|Extension id| Notes
+// ------------
+| vscode.ipynb
+| I use Jupyter Lab directly.
+// ------------
+| vscode.builtin-notebook-renderers
+| I use Jupyter Lab directly.
+// ------------
+|=====

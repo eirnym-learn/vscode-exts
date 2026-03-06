@@ -1,0 +1,26 @@
+{
+  "name": "eirnym.js-builtin",
+  "displayName": "Local Extension JavaScript Pack (builtins)",
+  "description": "JavaScript built-in extensions.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [
+    "vscode.css-language-features",
+    "vscode.html-language-features",
+    "vscode.typescript-language-features",
+    "ms-vscode.js-debug",
+    "ms-vscode.js-debug-companion",
+    "vscode.less",
+    "vscode.npm",
+    "vscode.css",
+    "vscode.html",
+    "vscode.javascript",
+    "vscode.scss",
+    "vscode.typescript"
+  ]
+}

@@ -1,0 +1,57 @@
+= Personal VSCode extension collections
+
+Personal extension collections for quick enable/disable without requirements.
+All additional note in each collection is my personal opinion, which may or may not be aligned with yours.
+
+== Notes
+
+* Every collection contain my personal notes, which express my personal opinion on an extension.
+  It may be unwise or outdated, we're all humans.
+  When you find an extension which is not useful for me and very useful for you (or vice versa), I'm open for discussions.
+* My primary OS is macOS, so some languages have only basic support (such as C# or Powershell).
+  I gladly accept contributions on which extensions should be enabled by default or for a specicic language.
+* All collections are neither a comprehensive, nor polished list and need to be revisited.
+* PRs, suggestions and discussions are welcome.
+
+== Setup
+
+* Install packs one by one
+* Disable all of extensions including installed packs and built-in.
+* Enable `General` bundle and `general-builtin` bundle.
+* Enable extension packs you need per-project.
+
+== Collection contents
+
+Every collection has 2 folders: for builtin and for third-party.
+You probably don't need builtin collections if you don't disable any builtin extension.
+
+|======
+| Collection | Description | Notes
+// ------------
+| general
+| Language-agnostic plugins I'd like to be enabled all the time.
+|
+// ------------
+| cpp
+| C\+\+ specific plugins in clang/meson projects.
+| Support for MSVC/CMake is missing as I rarely use either of them.
+  I'd appreciate for recommendations
+// ------------
+| csharp
+| C# specific plugins.
+| I'd appreciate for recommendations for different platforms.
+// ------------
+| python
+| Python specific plugins.
+|
+// ------------
+| rust
+| Rust specific plugins
+|
+// ------------
+| shell
+| Shell(zsh/bash), Microsoft Powershell and Microsoft BAT languages.
+| Plugins provide very basic support for these languages.
+  In some cases (Mac)Vim provide more.
+// ------------
+|======

@@ -1,0 +1,18 @@
+{
+  "name": "eirnym.js",
+  "displayName": "Local Extension JavaScript Pack",
+  "description": "JavaScript extensions.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [
+    "vue.volar",
+    "vytautassurvila.csharp-ls",
+    "esbenp.prettier-vscode",
+    "vitest.explorer"
+  ]
+}

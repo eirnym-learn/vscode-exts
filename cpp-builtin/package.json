@@ -1,0 +1,15 @@
+{
+  "name": "eirnym.cpp-builtin",
+  "displayName": "Local Extension Common Pack (builtins)",
+  "description": "Common built-in extensions used.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [
+    "vscode.cpp"
+  ]
+}
