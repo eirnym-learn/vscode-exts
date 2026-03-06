@@ -66,7 +66,7 @@ jobs:
 
     - name: Install dependencies
       working-directory: ${{ matrix.dir }}
-      run: npm ci
+      run: npm ci --no-fund
 
     - name: Compile / build
       working-directory: ${{ matrix.dir }}
@@ -79,10 +79,9 @@ jobs:
     - name: Package extension (.vsix)
       working-directory: ${{ matrix.dir }}
       run: |
-        mkdir ../output
-        npm install --global @vscode/vsce --prefer-offline
+        npm install --no-fund --global @vscode/vsce --prefer-offline
         vsce package --no-dependencies \
-          --out "../output/$MATRIX_PUBLISHER.$MATRIX_NAME-$MATRIX_VERSION.vsix"
+          --out "../$MATRIX_PUBLISHER.$MATRIX_NAME-$MATRIX_VERSION.vsix"
       env:
         MATRIX_PUBLISHER: ${{ matrix.publisher }}
         MATRIX_NAME: ${{ matrix.name }}
@@ -92,7 +91,7 @@ jobs:
       uses: actions/upload-artifact@v6
       with:
         name: ${{ matrix.name }}-${{ matrix.version }}
-        path: output/*.vsix
+        path: *.vsix
         retention-days: 1
         if-no-files-found: error
   publish:
