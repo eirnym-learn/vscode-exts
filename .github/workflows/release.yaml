@@ -1,0 +1,122 @@
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+name: Release VSCode Extensions
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (e.g. v1.2.3)"
+        required: true
+
+# Default to no permissions — elevated only where needed
+permissions: {}
+
+jobs:
+  discover:
+    name: Discover extensions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build extension matrix
+        id: set-matrix
+        run: |
+          extensions=()
+          for package in $(find . -name package.json -maxdepth 2 -mindepth 2 -type f | sort);do
+            dir=$(dirname "$package" | sed 's,^\./,,')
+            output=$( jq --indent 0 "{dir: \"$dir\", publisher: .publisher, name: .name, version: .version}" "$package")
+            extensions+=($output)
+          done
+          matrix=$(printf '%s\n' "${extensions[@]}" | jq -sc '{"include": .}')
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
+  package:
+    name: Package ${{ matrix.name }}
+    needs: discover
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix: ${{ fromJson(needs.discover.outputs.matrix) }}
+      fail-fast: false          # package the rest even if one fails
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          cache-dependency-path: ${{ matrix.dir }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.dir }}
+        run: npm ci
+
+      - name: Compile / build
+        working-directory: ${{ matrix.dir }}
+        # Remove this step if your extensions ship raw TypeScript source
+        run: npm run compile --if-present
+
+      - name: Run tests
+        working-directory: ${{ matrix.dir }}
+        run: npm test --if-present
+
+      - name: Package extension (.vsix)
+        working-directory: ${{ matrix.dir }}
+        run: |
+          npm install --global @vscode/vsce --prefer-offline
+          vsce package --no-dependencies \
+            --out "${{ matrix.name }}-${{ matrix.version }}.vsix"
+
+      - name: Upload artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}-${{ matrix.version }}
+          path: ${{ matrix.dir }}/${{ matrix.name }}-${{ matrix.version }}.vsix
+          retention-days: 1
+          if-no-files-found: error
+
+  # ── 3. Publish all artefacts as a single GitHub Release ───────────────────
+  publish:
+    name: Publish GitHub Release
+    needs: package
+    runs-on: ubuntu-latest
+    environment: publish-gh       # gate behind your environment + its secrets/reviewers
+    permissions:
+      contents: write             # needed to create releases and upload assets
+    steps:
+      - name: Download all artefacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist/             # each extension lands in dist/<name>-<version>/
+
+      - name: Collect .vsix files
+        id: collect
+        run: |
+          files=$(find dist -name "*.vsix" | tr '\n' ' ')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+
+      - name: Determine release tag
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create release & upload assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.tag.outputs.tag }}" \
+            --repo "${{ github.repository }}" \
+            --title "Release ${{ steps.tag.outputs.tag }}" \
+            --generate-notes \
+            ${{ steps.collect.outputs.files }}
